@@ -1,5 +1,7 @@
 import os, sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+import os, sys
+path_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+sys.path.append(path_file)
 
 import streamlit as st
 
@@ -17,7 +19,7 @@ st.set_page_config(
     page_icon="🏙️", 
     layout="wide")
 
-df = etl.extract.csv('data/processed/zomato.csv')
+df = etl.extract.csv(path_file+'/data/processed/zomato.csv')
 
 # ======================================================================================================
 # SideBar

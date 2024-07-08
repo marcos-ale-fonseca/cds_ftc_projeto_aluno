@@ -49,7 +49,7 @@ cuisines_options = st.sidebar.multiselect(
 )
 
 df_filtered = df[df['country_name'].isin(country_options)]
-df_top5 = layouts.cuisines.top5_best_restaurants_cuisines(df_filtered)
+df_top5 = layouts.cuisines.top5_restaurants_cuisines(df_filtered, ascending=False)
 
 # ======================================================================================================
 # Content

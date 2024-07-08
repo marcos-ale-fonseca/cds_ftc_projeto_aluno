@@ -15,13 +15,13 @@ def dataframe(df_raw: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: Dados transformados.
     """
     
-    from utils import Utils
+    import utils
 
     # Copiar dados
     df = df_raw.copy()
 
     # Renomear colunas
-    df = Utils.rename_columns(df)
+    df = utils.rename_columns(df)
     
     # Apagar valores faltantes e a feature switch_to_order_menu
     df = df.dropna()
@@ -32,10 +32,10 @@ def dataframe(df_raw: pd.DataFrame) -> pd.DataFrame:
     df["cuisines"] = df.loc[:, "cuisines"].apply(lambda x: x.split(",")[0])
 
     # Definir o nome da cor para cada cor hexadecimal
-    df['rating_color_name'] = df.rating_color.apply(Utils.color_name)
+    df['rating_color_name'] = df.rating_color.apply(utils.color_name)
 
     # Definir um nome de avaliação para cada cor hexadecimal
-    df['rating_name'] = df.rating_color.apply(Utils.rating_name)
+    df['rating_name'] = df.rating_color.apply(utils.rating_name)
     df[[
         'rating_color',
         'rating_color_name', 
@@ -43,11 +43,11 @@ def dataframe(df_raw: pd.DataFrame) -> pd.DataFrame:
         ]].value_counts()
     
     # Adicionar nome do país
-    df['country_name'] = df.country_code.apply(Utils.country_name)
+    df['country_name'] = df.country_code.apply(utils.country_name)
     df[['country_code', 'country_name']].sample(10)
 
     # Adicionar tipo para intervalo de preço
-    df['price_type'] = df.price_range.apply(Utils.create_price_type)
+    df['price_type'] = df.price_range.apply(utils.create_price_type)
     df[['price_range', 'price_type']].sample(10)
 
     # Convertendo para categorica

@@ -37,7 +37,7 @@ def top_restaurants(df, total_restaurants=10):
             .sort_values(['aggregate_rating'], ascending=False)
             .head(total_restaurants))
 
-def top5_best_restaurants_cuisines(df):
+def top5_restaurants_cuisines(df, ascending=False):
     cols = [
         'country_name', 
         'cuisines', 
@@ -48,7 +48,7 @@ def top5_best_restaurants_cuisines(df):
     result = (
         df[df['cuisines']
            .isin(cuisines)]
-           .sort_values(by='aggregate_rating', ascending=False)
+           .sort_values(by='aggregate_rating', ascending=ascending)
            .drop_duplicates(subset='cuisines', keep='first')
            .head(5)
     )

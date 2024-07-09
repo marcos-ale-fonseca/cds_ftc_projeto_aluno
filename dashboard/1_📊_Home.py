@@ -13,7 +13,6 @@ import importlib
 importlib.reload(utils)
 importlib.reload(layouts.home)
 
-
 df = etl.extract.csv(path_file+'/data/processed/zomato.csv')
 
 st.set_page_config(
